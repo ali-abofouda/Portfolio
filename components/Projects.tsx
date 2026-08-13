@@ -7,7 +7,7 @@ import { useLanguage } from '@/lib/LanguageContext';
 
 export const Projects: React.FC = () => {
   const { lang, t } = useLanguage();
-  const [filter, setFilter] = useState<'all' | 'medical' | 'genai' | 'fullstack'>('all');
+  const [filter, setFilter] = useState<'all' | 'agents' | 'rag' | 'fullstack'>('all');
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
 
   const projectsList = Object.values(PROJECT_DETAILS);
@@ -35,16 +35,16 @@ export const Projects: React.FC = () => {
               {t('projects.tabAll')}
             </button>
             <button
-              className={`tab-btn ${filter === 'medical' ? 'active' : ''}`}
-              onClick={() => setFilter('medical')}
+              className={`tab-btn ${filter === 'agents' ? 'active' : ''}`}
+              onClick={() => setFilter('agents')}
             >
-              {t('projects.tabMedical')}
+              {t('projects.tabAgents')}
             </button>
             <button
-              className={`tab-btn ${filter === 'genai' ? 'active' : ''}`}
-              onClick={() => setFilter('genai')}
+              className={`tab-btn ${filter === 'rag' ? 'active' : ''}`}
+              onClick={() => setFilter('rag')}
             >
-              {t('projects.tabGenAI')}
+              {t('projects.tabRag')}
             </button>
             <button
               className={`tab-btn ${filter === 'fullstack' ? 'active' : ''}`}

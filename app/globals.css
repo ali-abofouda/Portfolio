@@ -71,10 +71,20 @@ body {
 }
 html[data-theme="light"] .bg-grid { opacity: 0.6; }
 
-html[dir="rtl"] body { font-family: var(--font-ar); }
+html[dir="rtl"] body {
+  font-family: var(--font-ar);
+  line-height: 1.75;
+  letter-spacing: 0;
+}
 html[dir="rtl"] .brand-name,
 html[dir="rtl"] .nav-links,
-html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4 { font-family: var(--font-ar); }
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4 {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+}
+html[dir="rtl"] p {
+  line-height: 1.8;
+}
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
