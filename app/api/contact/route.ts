@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.CONTACT_EMAIL || 'ali.ashraf@example.com';
+    const recipientEmail = process.env.CONTACT_EMAIL || 'ali.ashraf.abofouda@gmail.com';
 
     if (resendApiKey) {
       const resendRes = await fetch('https://api.resend.com/emails', {
