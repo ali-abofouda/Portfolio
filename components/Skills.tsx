@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { SpotlightCard } from './SpotlightCard';
 
 export const Skills: React.FC = () => {
   const { t } = useLanguage();
@@ -16,7 +17,7 @@ export const Skills: React.FC = () => {
 
         <div className="skills-grid">
           {/* GenAI & Agentic Stack */}
-          <div className="skill-card">
+          <SpotlightCard className="skill-card">
             <div className="skill-card-head">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
@@ -34,10 +35,10 @@ export const Skills: React.FC = () => {
               <span className="tag">Vision-Language Models</span>
               <span className="tag">OpenAI / Claude APIs</span>
             </div>
-          </div>
+          </SpotlightCard>
 
           {/* Backend & Vector Infrastructure */}
-          <div className="skill-card">
+          <SpotlightCard className="skill-card">
             <div className="skill-card-head">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="2" y="2" width="20" height="8" rx="2" />
@@ -56,10 +57,10 @@ export const Skills: React.FC = () => {
               <span className="tag">Async Python</span>
               <span className="tag">ReportLab PDF</span>
             </div>
-          </div>
+          </SpotlightCard>
 
           {/* Frontend & AI Interfaces */}
-          <div className="skill-card">
+          <SpotlightCard className="skill-card">
             <div className="skill-card-head">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="16 18 22 12 16 6" />
@@ -76,10 +77,10 @@ export const Skills: React.FC = () => {
               <span className="tag">Zustand</span>
               <span className="tag">Recharts Analytics</span>
             </div>
-          </div>
+          </SpotlightCard>
 
           {/* DevOps & Tools */}
-          <div className="skill-card">
+          <SpotlightCard className="skill-card">
             <div className="skill-card-head">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
@@ -94,7 +95,7 @@ export const Skills: React.FC = () => {
               <span className="tag">VS Code</span>
               <span className="tag">Postman</span>
             </div>
-          </div>
+          </SpotlightCard>
         </div>
       </div>
     </section>

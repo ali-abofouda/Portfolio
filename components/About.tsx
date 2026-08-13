@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { SpotlightCard } from './SpotlightCard';
 
 export const About: React.FC = () => {
   const { t } = useLanguage();
@@ -22,18 +23,20 @@ export const About: React.FC = () => {
           </div>
 
           <div className="about-stats">
-            <div className="stat">
+            <SpotlightCard className="stat">
               <span className="stat-num">6+</span>
               <span className="stat-label">{t('about.statProjects')}</span>
-            </div>
-            <div className="stat">
+            </SpotlightCard>
+
+            <SpotlightCard className="stat">
               <span className="stat-num">4</span>
               <span className="stat-label">{t('about.statModels')}</span>
-            </div>
-            <div className="stat">
+            </SpotlightCard>
+
+            <SpotlightCard className="stat">
               <span className="stat-num">AR / EN</span>
               <span className="stat-label">{t('about.statLangs')}</span>
-            </div>
+            </SpotlightCard>
           </div>
         </div>
       </div>

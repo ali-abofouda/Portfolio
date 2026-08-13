@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { PROJECT_DETAILS, ProjectDetail } from '@/lib/projects-data';
 import { ProjectModal } from './ProjectModal';
+import { SpotlightCard } from './SpotlightCard';
 import { useLanguage } from '@/lib/LanguageContext';
 
 export const Projects: React.FC = () => {
@@ -56,7 +57,7 @@ export const Projects: React.FC = () => {
 
           <div className="projects-grid">
             {filteredProjects.map((project) => (
-              <div key={project.id} className="project-card">
+              <SpotlightCard key={project.id} className="project-card">
                 <div className="project-top">
                   <div
                     className="project-icon-box"
@@ -95,7 +96,7 @@ export const Projects: React.FC = () => {
                     </svg>
                   </a>
                 </div>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
         </div>

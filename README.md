@@ -1,64 +1,129 @@
-# Ali Ashraf — Portfolio
+# Ali Ashraf — Generative AI & LLM Systems Portfolio
 
-Personal portfolio for **Ali Ashraf — AI / ML Engineer**. Built with plain
-HTML, CSS, and JavaScript (no build step). Bilingual (Arabic / English) with
-full RTL support, light/dark theme, and responsive design.
+A production-ready, enterprise-grade developer portfolio for **Ali Ashraf — Generative AI & LLM Systems Engineer**. Built with **Next.js 15 (App Router)**, **React 19**, **TypeScript**, **Serverless API Routes**, and a **Vercel / Linear-inspired Slate Obsidian Design System**.
 
-## Features
+---
 
-- **Bilingual** — toggle between Arabic (RTL) and English (LTR); choice is saved.
-- **Dark / light theme** — respects OS preference on first visit, saved afterwards.
-- **Responsive** — works from mobile to desktop.
-- **Sections** — Hero, About, Skills, Projects, Contact.
-- **No dependencies** — just open the files in a browser.
+## 🚀 Key Features
 
-## File structure
+- **Generative AI & Agentic Focus**: Architecture showcase highlighting Multi-Agent systems (LangGraph), RAG pipelines, Vision-Language Models (PyTorch), and LLM orchestration.
+- **Full-Stack Next.js 15 App Router**: Built with strict TypeScript type safety, modular React components, and optimized static rendering.
+- **Serverless Backend API Routes**:
+  - `POST /api/contact`: Form submission handling integrated with **Resend API** for direct email delivery.
+  - `GET /api/github`: Live GitHub account statistics and repository metrics fetching.
+- **Bilingual & Full RTL Support**: Instant switching between **Arabic (RTL)** and **English (LTR)** with state persistence in `localStorage`.
+- **Linear / Vercel Design Aesthetics**: Slate obsidian palette (`#080c14`), linear background grid pattern, crisp typography (`Cairo` & `Inter`), zero emojis, and handcrafted vector SVG icons.
+- **CI/CD & Deployment Ready**: Pre-configured for single-click deployment on **Vercel** with **GitHub Actions** automated workflow validation.
 
-```
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Framework**: Next.js 15 (App Router)
+- **Frontend**: React 19, TypeScript, Vanilla CSS Modules
+- **State & i18n**: React Context (`LanguageContext`)
+- **Backend & APIs**: Next.js Serverless Functions, Resend Email API, GitHub REST API
+- **AI & ML Focus**: LangGraph, PyTorch, ChromaDB, LangChain, Ollama, FastAPI, Next.js 15
+
+---
+
+## 📂 Project Structure
+
+```text
 Portfolio/
-├── index.html    # markup + content
-├── styles.css    # all styling (tokens, theme, RTL, responsive)
-├── script.js     # i18n, theme toggle, nav, scroll reveal
+├── app/
+│   ├── api/
+│   │   ├── contact/
+│   │   │   └── route.ts         # Serverless email dispatch handler
+│   │   └── github/
+│   │       └── route.ts         # Live GitHub metrics API
+│   ├── favicon.ico
+│   ├── globals.css              # Linear Slate Obsidian design system
+│   ├── layout.tsx               # Root layout, fonts, SEO OpenGraph metadata
+│   └── page.tsx                 # Main application page
+├── components/
+│   ├── Navbar.tsx               # Header, Theme & Language toggles, Drawer
+│   ├── Hero.tsx                 # GenAI hero banner & action buttons
+│   ├── About.tsx                # Engineering narrative & statistics
+│   ├── Skills.tsx               # Categorized GenAI & software stack
+│   ├── Projects.tsx             # System category filter tabs & card grid
+│   ├── ProjectModal.tsx         # Expandable architecture detail modal
+│   ├── Timeline.tsx             # Experience stepper timeline
+│   ├── Contact.tsx              # Interactive contact form & email copy
+│   ├── Toast.tsx                # Notification alert toasts
+│   └── BackgroundGrid.tsx       # Radial linear background grid
+├── lib/
+│   ├── i18n.ts                  # Bilingual translation dictionary & types
+│   ├── projects-data.ts         # Typed GenAI project metadata dataset
+│   └── LanguageContext.tsx      # React context for lang and theme state
+├── .github/
+│   └── workflows/
+│       └── ci.yml               # GitHub Actions CI build validation
+├── .env.example                 # Environment variables spec
+├── vercel.json                  # Vercel deployment configuration
+├── tsconfig.json
+├── package.json
 └── README.md
 ```
 
-## Run locally
+---
 
-Just open `index.html` in your browser. Or serve it for a closer-to-production feel:
+## ⚙️ Local Development Setup
 
-```bash
-# Python
-python -m http.server 8000
+1. **Clone Repository & Install Dependencies**:
+   ```bash
+   git clone https://github.com/aliashraf/portfolio.git
+   cd portfolio
+   npm install
+   ```
 
-# or Node
-npx serve
+2. **Run Development Server**:
+   ```bash
+   npm run dev -- -p 3005
+   ```
+   Open [`http://localhost:3005`](http://localhost:3005) in your browser.
+
+3. **Build & Verify Production Bundle**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 🔑 Environment Variables Specification
+
+Create a `.env.local` file in the root directory (or configure them in your Vercel project dashboard):
+
+```env
+# Resend API Key for live email delivery (https://resend.com)
+RESEND_API_KEY=re_your_resend_api_key
+
+# Destination email address for portfolio inquiries
+CONTACT_EMAIL=ali.ashraf.abofouda@gmail.com
+
+# (Optional) GitHub Personal Access Token to increase API rate limits
+GITHUB_TOKEN=ghp_your_github_token
 ```
 
-Then visit `http://localhost:8000`.
+---
 
-## Customize
+## 🚀 Deployment
 
-All content lives in **two places**:
+### Deploy to Vercel
 
-1. **Static text in `index.html`** — the English copy is written directly in the
-   HTML as the default.
-2. **Translations in `script.js`** — the `I18N` object holds the strings for both
-   `en` and `ar`. Edit the Arabic/English text there.
+1. Push your repository to GitHub.
+2. Import the project into **[Vercel](https://vercel.com)**.
+3. Add the `RESEND_API_KEY` and `CONTACT_EMAIL` environment variables.
+4. Click **Deploy**.
 
-### Things you'll want to update
+---
 
-| What | Where |
-| --- | --- |
-| Name, title, description | `index.html` hero + `I18N` in `script.js` |
-| Project links | `href="https://github.com/"` placeholders in `index.html` |
-| Email | `href="mailto:you@example.com"` in the contact section |
-| GitHub / LinkedIn | contact section links |
-| Colors | CSS variables (`--accent`, `--accent-2`, `--accent-3`) in `styles.css` |
+## 📬 Contact & Socials
 
-## Deploy
+- **Email**: [ali.ashraf.abofouda@gmail.com](mailto:ali.ashraf.abofouda@gmail.com)
+- **LinkedIn**: [linkedin.com/in/ali-ashraf-8b619b22a](https://www.linkedin.com/in/ali-ashraf-8b619b22a)
+- **X / Twitter**: [x.com/justAliaAhraf](https://twitter.com/justAliaAhraf)
 
-This is static, so any host works:
+---
 
-- **Vercel** — `vercel` in this folder (or import the repo).
-- **Netlify** — drag-and-drop the folder, or connect the repo.
-- **GitHub Pages** — push to a repo, enable Pages on the `main` branch.
+Developed by **Ali Ashraf** · Powered by **Next.js 15, TypeScript & GenAI Systems**.
