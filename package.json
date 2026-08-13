@@ -1,0 +1,21 @@
+{
+  "name": "portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Full-Stack Portfolio for Ali Ashraf — AI / ML Engineer built with Next.js 15, TypeScript, Serverless API Routes, and Vercel/Linear Design System.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "typescript": "^7.0.2"
+  }
+}
