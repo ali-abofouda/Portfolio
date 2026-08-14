@@ -24,31 +24,31 @@ export const Projects: React.FC = () => {
       <section className="section" id="projects">
         <div className="container">
           <div className="section-head">
-            <span className="section-num">03</span>
+            <span className="section-tag font-mono">// SYSTEM_ARCHITECTURES</span>
             <h2 className="section-title">{t('projects.title')}</h2>
           </div>
 
           <div className="filter-tabs">
             <button
-              className={`tab-btn ${filter === 'all' ? 'active' : ''}`}
+              className={`tab-btn font-mono ${filter === 'all' ? 'active' : ''}`}
               onClick={() => setFilter('all')}
             >
               {t('projects.tabAll')}
             </button>
             <button
-              className={`tab-btn ${filter === 'agents' ? 'active' : ''}`}
+              className={`tab-btn font-mono ${filter === 'agents' ? 'active' : ''}`}
               onClick={() => setFilter('agents')}
             >
               {t('projects.tabAgents')}
             </button>
             <button
-              className={`tab-btn ${filter === 'rag' ? 'active' : ''}`}
+              className={`tab-btn font-mono ${filter === 'rag' ? 'active' : ''}`}
               onClick={() => setFilter('rag')}
             >
               {t('projects.tabRag')}
             </button>
             <button
-              className={`tab-btn ${filter === 'fullstack' ? 'active' : ''}`}
+              className={`tab-btn font-mono ${filter === 'fullstack' ? 'active' : ''}`}
               onClick={() => setFilter('fullstack')}
             >
               {t('projects.tabFullstack')}
@@ -63,15 +63,15 @@ export const Projects: React.FC = () => {
                     className="project-icon-box"
                     dangerouslySetInnerHTML={{ __html: project.iconSvg }}
                   />
-                  <span className="project-badge">{t(project.badgeKey)}</span>
+                  <span className="project-badge font-mono">{t(project.badgeKey)}</span>
                 </div>
 
                 <h3>{isAr ? project.titleAr : project.title}</h3>
                 <p>{t(project.descKey)}</p>
 
                 <div className="tags">
-                  {project.tags.slice(0, 4).map((tag, idx) => (
-                    <span key={idx} className="tag">
+                  {project.tags.slice(0, 5).map((tag, idx) => (
+                    <span key={idx} className="tag font-mono">
                       {tag}
                     </span>
                   ))}
@@ -79,16 +79,16 @@ export const Projects: React.FC = () => {
 
                 <div className="project-actions">
                   <button
-                    className="btn-detail"
+                    className="btn-detail font-mono"
                     onClick={() => setSelectedProject(project)}
                   >
-                    {t('projects.viewDetails')}
+                    <span>{t('projects.viewDetails')}</span>
                   </button>
                   <a
                     href={project.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="proj-link"
+                    className="proj-link font-mono"
                     aria-label="GitHub Repository"
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">

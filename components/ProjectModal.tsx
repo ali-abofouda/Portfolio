@@ -32,8 +32,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             dangerouslySetInnerHTML={{ __html: project.iconSvg }}
           />
           <div>
+            <span className="modal-badge font-mono">{t(project.badgeKey)}</span>
             <h3 className="modal-title">{isAr ? project.titleAr : project.title}</h3>
-            <span className="modal-badge">{t(project.badgeKey)}</span>
           </div>
         </div>
 
@@ -43,7 +43,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           <h4>{t('modal.keyFeatures')}</h4>
           <ul className="modal-features">
             {features.map((feat, idx) => (
-              <li key={idx}>{feat}</li>
+              <li key={idx}>
+                <span className="feature-bullet font-mono">//</span>
+                <span>{feat}</span>
+              </li>
             ))}
           </ul>
         </div>
@@ -52,7 +55,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           <h4>{t('modal.techStack')}</h4>
           <div className="tags">
             {project.tags.map((tag, idx) => (
-              <span key={idx} className="tag">
+              <span key={idx} className="tag font-mono">
                 {tag}
               </span>
             ))}

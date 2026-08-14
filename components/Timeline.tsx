@@ -10,7 +10,7 @@ export const Timeline: React.FC = () => {
     <section className="section" id="timeline">
       <div className="container">
         <div className="section-head">
-          <span className="section-num">04</span>
+          <span className="section-tag font-mono">// EXECUTION_LOG</span>
           <h2 className="section-title">{t('timeline.title')}</h2>
         </div>
 
@@ -18,7 +18,7 @@ export const Timeline: React.FC = () => {
           <div className="timeline-item">
             <div className="timeline-dot" />
             <div className="timeline-content">
-              <span className="timeline-date">{t('timeline.item1.date')}</span>
+              <span className="timeline-date font-mono">{t('timeline.item1.date')}</span>
               <h3>{t('timeline.item1.title')}</h3>
               <p>{t('timeline.item1.desc')}</p>
             </div>
@@ -27,7 +27,7 @@ export const Timeline: React.FC = () => {
           <div className="timeline-item">
             <div className="timeline-dot" />
             <div className="timeline-content">
-              <span className="timeline-date">{t('timeline.item2.date')}</span>
+              <span className="timeline-date font-mono">{t('timeline.item2.date')}</span>
               <h3>{t('timeline.item2.title')}</h3>
               <p>{t('timeline.item2.desc')}</p>
             </div>
@@ -36,7 +36,7 @@ export const Timeline: React.FC = () => {
           <div className="timeline-item">
             <div className="timeline-dot" />
             <div className="timeline-content">
-              <span className="timeline-date">{t('timeline.item3.date')}</span>
+              <span className="timeline-date font-mono">{t('timeline.item3.date')}</span>
               <h3>{t('timeline.item3.title')}</h3>
               <p>{t('timeline.item3.desc')}</p>
             </div>
@@ -45,7 +45,7 @@ export const Timeline: React.FC = () => {
           <div className="timeline-item">
             <div className="timeline-dot" />
             <div className="timeline-content">
-              <span className="timeline-date">{t('timeline.item4.date')}</span>
+              <span className="timeline-date font-mono">{t('timeline.item4.date')}</span>
               <h3>{t('timeline.item4.title')}</h3>
               <p>{t('timeline.item4.desc')}</p>
             </div>

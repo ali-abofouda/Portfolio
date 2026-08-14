@@ -11,7 +11,7 @@ export const About: React.FC = () => {
     <section className="section" id="about">
       <div className="container">
         <div className="section-head">
-          <span className="section-num">01</span>
+          <span className="section-tag font-mono">// ENGINEER_PROFILE</span>
           <h2 className="section-title">{t('about.title')}</h2>
         </div>
 
@@ -24,17 +24,17 @@ export const About: React.FC = () => {
 
           <div className="about-stats">
             <SpotlightCard className="stat">
-              <span className="stat-num">6+</span>
+              <span className="stat-num font-mono">6+</span>
               <span className="stat-label">{t('about.statProjects')}</span>
             </SpotlightCard>
 
             <SpotlightCard className="stat">
-              <span className="stat-num">4</span>
+              <span className="stat-num font-mono">4</span>
               <span className="stat-label">{t('about.statModels')}</span>
             </SpotlightCard>
 
             <SpotlightCard className="stat">
-              <span className="stat-num">AR / EN</span>
+              <span className="stat-num font-mono">AR / EN</span>
               <span className="stat-label">{t('about.statLangs')}</span>
             </SpotlightCard>
           </div>
