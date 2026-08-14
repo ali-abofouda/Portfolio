@@ -4,42 +4,46 @@
    ============================================ */
 
 :root {
-  --bg: #080c14;
-  --bg-soft: #0f172a;
-  --surface: rgba(255, 255, 255, 0.03);
-  --surface-hover: rgba(255, 255, 255, 0.06);
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.18);
+  --bg: #0b0f17;
+  --bg-soft: #111827;
+  --surface: rgba(255, 255, 255, 0.025);
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --border: #1e293b;
+  --border-strong: #334155;
 
   --text: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
 
-  --accent: #6366f1;        /* Indigo */
-  --accent-2: #38bdf8;      /* Sky Cyan */
-  --accent-glow: rgba(99, 102, 241, 0.25);
+  --accent: #00e599;        /* Phosphor Mint Emerald */
+  --accent-2: #0ea5e9;      /* Vector Sky Cyan */
+  --accent-glow: rgba(0, 229, 153, 0.15);
 
-  --radius: 14px;
-  --radius-sm: 8px;
-  --maxw: 1120px;
+  --radius: 12px;
+  --radius-sm: 6px;
+  --maxw: 1140px;
 
-  --font: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-ar: 'Cairo', 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-ar: 'Cairo', 'Plus Jakarta Sans', system-ui, sans-serif;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html[data-theme="light"] {
-  --bg: #fafafa;
+  --bg: #f8fafc;
   --bg-soft: #ffffff;
-  --surface: rgba(0, 0, 0, 0.02);
-  --surface-hover: rgba(0, 0, 0, 0.04);
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.15);
+  --surface: rgba(15, 23, 42, 0.03);
+  --surface-hover: rgba(15, 23, 42, 0.06);
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
   --text: #0f172a;
   --text-muted: #475569;
-  --text-dim: #94a3b8;
-  --accent-glow: rgba(99, 102, 241, 0.15);
+  --text-dim: #64748b;
+  --accent: #059669;
+  --accent-2: #0284c7;
+  --accent-glow: rgba(5, 150, 105, 0.12);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,12 +51,16 @@ html[data-theme="light"] {
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
-  font-family: var(--font);
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
   transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+h1, h2, h3, h4, .brand-name, .hero-title, .section-title {
+  font-family: var(--font-display);
 }
 
 .scroll-progress {
@@ -62,21 +70,21 @@ body {
 }
 
 .bg-grid {
-  position: fixed; inset: 0; z-index: -2; pointer-events: none; opacity: 0.4;
+  position: fixed; inset: 0; z-index: -2; pointer-events: none; opacity: 0.35;
   background-image: linear-gradient(to right, var(--border) 1px, transparent 1px),
                     linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 80%);
-  -webkit-mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 80%);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at 50% 30%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black 25%, transparent 85%);
 }
-html[data-theme="light"] .bg-grid { opacity: 0.6; }
+html[data-theme="light"] .bg-grid { opacity: 0.5; }
 
 .bg-noise {
   position: fixed; inset: 0; width: 100vw; height: 100vh;
-  z-index: -1; pointer-events: none; opacity: 0.04;
+  z-index: -1; pointer-events: none; opacity: 0.03;
   mix-blend-mode: overlay;
 }
-html[data-theme="light"] .bg-noise { opacity: 0.025; }
+html[data-theme="light"] .bg-noise { opacity: 0.02; }
 
 html[dir="rtl"] body {
   font-family: var(--font-ar);
@@ -85,8 +93,10 @@ html[dir="rtl"] body {
 }
 html[dir="rtl"] .brand-name,
 html[dir="rtl"] .nav-links,
-html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4 {
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4,
+html[dir="rtl"] .hero-title, html[dir="rtl"] .section-title {
   font-family: var(--font-ar);
+  font-weight: 700;
   letter-spacing: 0;
 }
 html[dir="rtl"] p {
