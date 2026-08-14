@@ -89,7 +89,7 @@ export const Hero: React.FC = () => {
             </a>
 
             <a
-              href="https://github.com/"
+              href="https://github.com/ali-abofouda"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline"

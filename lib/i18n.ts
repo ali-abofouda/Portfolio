@@ -29,6 +29,13 @@ export const I18N: Record<Language, TranslationDictionary> = {
     'about.statModels': 'Agent & Vision Pipelines',
     'about.statLangs': 'Languages (AR / EN)',
 
+    'github.title': 'Live GitHub Telemetry',
+    'github.tag': '// LIVE_REPOSITORY_STREAM',
+    'github.publicRepos': 'Public Repositories',
+    'github.followers': 'Followers',
+    'github.stars': 'Total Stars',
+    'github.updated': 'Updated:',
+
     'skills.title': 'GenAI & Software Stack',
     'skills.ai': 'Generative AI & Agentic Stack',
     'skills.backend': 'Backend & Vector Infrastructure',
@@ -107,6 +114,13 @@ export const I18N: Record<Language, TranslationDictionary> = {
     'about.statProjects': 'أنظمة ذكاء اصطناعي توليدي',
     'about.statModels': 'مسارات وكلاء ورؤية حاسوبية',
     'about.statLangs': 'لغتان (عربي / إنجليزي)',
+
+    'github.title': 'بيانات GitHub المباشرة',
+    'github.tag': '// LIVE_REPOSITORY_STREAM',
+    'github.publicRepos': 'المستودعات العامة',
+    'github.followers': 'المتابعين',
+    'github.stars': 'إجمالي التقييمات',
+    'github.updated': 'تم التحديث:',
 
     'skills.title': 'التقنيات وأنظمة GenAI',
     'skills.ai': 'الذكاء الاصطناعي التوليدي والوكلاء (GenAI & Agents)',

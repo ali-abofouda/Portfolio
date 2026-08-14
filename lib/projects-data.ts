@@ -34,7 +34,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       'تقارير تشخيصية سريرية منظمة مع نسب دقة.'
     ],
     tags: ['LangGraph', 'LLM Agents', 'FastAPI', 'PostgreSQL', 'Python', 'JSON Schema'],
-    repo: 'https://github.com/'
+    repo: 'https://github.com/ali-abofouda'
   },
   agentslab: {
     id: 'agentslab',
@@ -57,7 +57,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       'بيئة برمجية نمطية لتجربة نماذج اللغة.'
     ],
     tags: ['RAG Pipeline', 'ChromaDB', 'LangChain', 'Tool Calling', 'Python', 'Pydantic'],
-    repo: 'https://github.com/'
+    repo: 'https://github.com/ali-abofouda'
   },
   roadmap: {
     id: 'roadmap',
@@ -80,7 +80,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       'رسوم بيانية تحليلية عبر Recharts.'
     ],
     tags: ['Generative AI', 'Next.js 15', 'React', 'Zustand', 'Recharts', 'Tailwind CSS'],
-    repo: 'https://github.com/'
+    repo: 'https://github.com/ali-abofouda'
   },
   cnn: {
     id: 'cnn',
@@ -103,7 +103,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       'تحليل صور قاع العين للكشف عن اعتلال الشبكية.'
     ],
     tags: ['PyTorch', 'Torchvision', 'U-Net', 'ResNet', 'OpenCV', 'Scikit-Learn'],
-    repo: 'https://github.com/'
+    repo: 'https://github.com/ali-abofouda'
   },
   bodyshift: {
     id: 'bodyshift',
@@ -126,7 +126,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       'تحقق صارم من المدخلات بواسطة Zod.'
     ],
     tags: ['Next.js 15', 'Supabase', 'TypeScript', 'Recharts', 'Zod', 'Tailwind CSS'],
-    repo: 'https://github.com/'
+    repo: 'https://github.com/ali-abofouda'
   },
   dietmaker: {
     id: 'dietmaker',
@@ -149,6 +149,6 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       'واجهة برمجية RESTful منسقة.'
     ],
     tags: ['FastAPI', 'Python', 'Jinja2', 'ReportLab / WeasyPrint', 'PDF Engine'],
-    repo: 'https://github.com/'
+    repo: 'https://github.com/ali-abofouda'
   }
 };
