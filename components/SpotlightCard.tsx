@@ -38,7 +38,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({ children, classNam
           inset: 0,
           opacity,
           transition: 'opacity 0.25s ease',
-          background: `radial-gradient(550px circle at ${position.x}px ${position.y}px, rgba(99, 102, 241, 0.12), transparent 40%)`,
+          background: `radial-gradient(520px circle at ${position.x}px ${position.y}px, rgba(0, 229, 153, 0.11), transparent 45%)`,
           zIndex: 1,
         }}
       />
@@ -52,16 +52,14 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({ children, classNam
           padding: '1px',
           opacity,
           transition: 'opacity 0.25s ease',
-          background: `radial-gradient(350px circle at ${position.x}px ${position.y}px, rgba(56, 189, 248, 0.45), transparent 40%)`,
+          background: `radial-gradient(360px circle at ${position.x}px ${position.y}px, rgba(14, 165, 233, 0.45), transparent 45%)`,
           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
           WebkitMaskComposite: 'xor',
           maskComposite: 'exclude',
           zIndex: 2,
         }}
       />
-      <div className="spotlight-content" style={{ position: 'relative', zIndex: 3, height: '100%', display: 'flex', flexDirection: 'column', width: '100%' }}>
-        {children}
-      </div>
+      <div className="spotlight-content">{children}</div>
     </div>
   );
 };

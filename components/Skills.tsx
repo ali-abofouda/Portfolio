@@ -15,8 +15,8 @@ export const Skills: React.FC = () => {
           <h2 className="section-title">{t('skills.title')}</h2>
         </div>
 
-        <div className="skills-grid">
-          {/* GenAI & Agentic Stack */}
+        <div className="skills-bento-grid">
+          {/* Agents, Orchestration & AI Security */}
           <SpotlightCard className="skill-card">
             <div className="skill-card-head">
               <div className="skill-icon-box">
@@ -27,19 +27,18 @@ export const Skills: React.FC = () => {
               <h3>{t('skills.ai')}</h3>
             </div>
             <div className="tags">
-              <span className="tag font-mono">LangGraph</span>
-              <span className="tag font-mono">LLM Multi-Agents</span>
-              <span className="tag font-mono">LangChain</span>
-              <span className="tag font-mono">RAG Pipelines</span>
-              <span className="tag font-mono">PyTorch</span>
-              <span className="tag font-mono">Function Calling</span>
-              <span className="tag font-mono">Ollama / vLLM</span>
-              <span className="tag font-mono">Vision-Language Models</span>
-              <span className="tag font-mono">OpenAI / Claude APIs</span>
+              <span className="tag tag-core font-mono">LangGraph (StateGraph)</span>
+              <span className="tag tag-core font-mono">LiteLLM Router</span>
+              <span className="tag tag-core font-mono">Model Armor Guardrails</span>
+              <span className="tag font-mono">ReAct Multi-Agents</span>
+              <span className="tag font-mono">Adversarial Red Teaming</span>
+              <span className="tag font-mono">LLM-as-a-Judge</span>
+              <span className="tag font-mono">LangSmith Tracing</span>
+              <span className="tag font-mono">LangGraph Studio</span>
             </div>
           </SpotlightCard>
 
-          {/* Backend & Vector Infrastructure */}
+          {/* Hybrid RAG, Retrieval & Backend APIs */}
           <SpotlightCard className="skill-card">
             <div className="skill-card-head">
               <div className="skill-icon-box">
@@ -53,17 +52,17 @@ export const Skills: React.FC = () => {
               <h3>{t('skills.backend')}</h3>
             </div>
             <div className="tags">
+              <span className="tag tag-core font-mono">Qdrant Cloud (Hybrid)</span>
+              <span className="tag tag-core font-mono">FastEmbed (BM25 / ONNX)</span>
+              <span className="tag tag-core font-mono">Cross-Encoder Reranking</span>
+              <span className="tag font-mono">Semantic Caching</span>
               <span className="tag font-mono">FastAPI</span>
-              <span className="tag font-mono">ChromaDB</span>
-              <span className="tag font-mono">PostgreSQL / pgvector</span>
-              <span className="tag font-mono">RESTful APIs</span>
-              <span className="tag font-mono">JSON Schema Validation</span>
-              <span className="tag font-mono">Async Python</span>
-              <span className="tag font-mono">ReportLab PDF</span>
+              <span className="tag font-mono">Pydantic v2 DTOs</span>
+              <span className="tag font-mono">Async Python 3.12</span>
             </div>
           </SpotlightCard>
 
-          {/* Frontend & AI Interfaces */}
+          {/* Interfaces & Access Governance */}
           <SpotlightCard className="skill-card">
             <div className="skill-card-head">
               <div className="skill-icon-box">
@@ -75,17 +74,17 @@ export const Skills: React.FC = () => {
               <h3>{t('skills.frontend')}</h3>
             </div>
             <div className="tags">
-              <span className="tag font-mono">Next.js 15</span>
+              <span className="tag tag-core font-mono">Next.js 15</span>
+              <span className="tag tag-core font-mono">TypeScript</span>
               <span className="tag font-mono">React 19</span>
-              <span className="tag font-mono">TypeScript</span>
+              <span className="tag font-mono">Streamlit (AppTest)</span>
+              <span className="tag font-mono">Chainlit</span>
+              <span className="tag font-mono">Google OAuth 2.0 (RBAC)</span>
               <span className="tag font-mono">Tailwind CSS</span>
-              <span className="tag font-mono">Supabase Auth (RLS)</span>
-              <span className="tag font-mono">Zustand</span>
-              <span className="tag font-mono">Recharts Analytics</span>
             </div>
           </SpotlightCard>
 
-          {/* DevOps & Tools */}
+          {/* Cloud, Containers & Automated Testing */}
           <SpotlightCard className="skill-card">
             <div className="skill-card-head">
               <div className="skill-icon-box">
@@ -96,12 +95,12 @@ export const Skills: React.FC = () => {
               <h3>{t('skills.tools')}</h3>
             </div>
             <div className="tags">
+              <span className="tag tag-core font-mono">Docker & Compose</span>
+              <span className="tag tag-core font-mono">Google Cloud Run</span>
+              <span className="tag font-mono">Unittest / Pytest (53 Tests)</span>
               <span className="tag font-mono">Git & GitHub Actions</span>
-              <span className="tag font-mono">Docker</span>
-              <span className="tag font-mono">Vercel Deployment</span>
-              <span className="tag font-mono">Zod Schema</span>
-              <span className="tag font-mono">VS Code</span>
-              <span className="tag font-mono">Postman</span>
+              <span className="tag font-mono">Vercel</span>
+              <span className="tag font-mono">Linux</span>
             </div>
           </SpotlightCard>
         </div>

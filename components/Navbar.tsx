@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 
 export const Navbar: React.FC = () => {
@@ -26,27 +27,30 @@ export const Navbar: React.FC = () => {
       />
       <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-inner">
-          <a href="#" className="brand">
+          <Link href="/" className="brand">
             <span className="brand-mark">AA</span>
             <span className="brand-name">Ali Ashraf</span>
-          </a>
+          </Link>
 
           <nav className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-            <a href="#about" onClick={() => setMobileMenuOpen(false)}>
+            <a href="/#about" onClick={() => setMobileMenuOpen(false)}>
               {t('nav.about')}
             </a>
-            <a href="#skills" onClick={() => setMobileMenuOpen(false)}>
+            <a href="/#skills" onClick={() => setMobileMenuOpen(false)}>
               {t('nav.skills')}
             </a>
-            <a href="#projects" onClick={() => setMobileMenuOpen(false)}>
+            <a href="/#projects" onClick={() => setMobileMenuOpen(false)}>
               {t('nav.projects')}
             </a>
-            <a href="#timeline" onClick={() => setMobileMenuOpen(false)}>
+            <a href="/#timeline" onClick={() => setMobileMenuOpen(false)}>
               {t('nav.timeline')}
             </a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
+            <a href="/#contact" onClick={() => setMobileMenuOpen(false)}>
               {t('nav.contact')}
             </a>
+            <Link href="/resume" className="nav-resume-link" onClick={() => setMobileMenuOpen(false)}>
+              {t('nav.resume')}
+            </Link>
           </nav>
 
           <div className="nav-actions">

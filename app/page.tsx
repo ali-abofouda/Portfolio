@@ -10,6 +10,7 @@ import { Projects } from '@/components/Projects';
 import { GitHubTelemetry } from '@/components/GitHubTelemetry';
 import { Timeline } from '@/components/Timeline';
 import { Contact } from '@/components/Contact';
+import { ScrollUtilities } from '@/components/ScrollUtilities';
 import { Toast } from '@/components/Toast';
 import { useLanguage } from '@/lib/LanguageContext';
 
@@ -24,6 +25,7 @@ export default function Home() {
 
   return (
     <main>
+      <ScrollUtilities />
       <BackgroundGrid />
       <Navbar />
       <Hero />

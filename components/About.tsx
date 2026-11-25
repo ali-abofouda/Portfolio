@@ -16,21 +16,23 @@ export const About: React.FC = () => {
         </div>
 
         <div className="about-grid">
-          <div className="about-text">
-            <p>{t('about.p1')}</p>
-            <p>{t('about.p2')}</p>
-            <p>{t('about.p3')}</p>
-          </div>
+          <SpotlightCard className="about-bio-card">
+            <div className="about-text">
+              <p>{t('about.p1')}</p>
+              <p>{t('about.p2')}</p>
+              <p>{t('about.p3')}</p>
+            </div>
+          </SpotlightCard>
 
-          <div className="about-stats">
-            <SpotlightCard className="stat">
-              <span className="stat-num font-mono">6+</span>
-              <span className="stat-label">{t('about.statProjects')}</span>
+          <div className="about-stats-bento">
+            <SpotlightCard className="stat stat-featured">
+              <span className="stat-num font-mono">100%</span>
+              <span className="stat-label">{t('about.statCorrectness')}</span>
             </SpotlightCard>
 
             <SpotlightCard className="stat">
-              <span className="stat-num font-mono">4</span>
-              <span className="stat-label">{t('about.statModels')}</span>
+              <span className="stat-num font-mono">53/53</span>
+              <span className="stat-label">{t('about.statTests')}</span>
             </SpotlightCard>
 
             <SpotlightCard className="stat">

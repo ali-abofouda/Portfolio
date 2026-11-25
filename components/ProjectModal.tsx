@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ProjectDetail } from '@/lib/projects-data';
 import { useLanguage } from '@/lib/LanguageContext';
 
@@ -11,6 +11,25 @@ interface ProjectModalProps {
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const { lang, t } = useLanguage();
+
+  useEffect(() => {
+    if (!project) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [project, onClose]);
 
   if (!project) return null;
 
@@ -38,6 +57,22 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         </div>
 
         <p className="modal-desc">{t(project.descKey)}</p>
+
+        {project.metrics && project.metrics.length > 0 && (
+          <div className="modal-section">
+            <h4>{t('modal.metrics')}</h4>
+            <div className="modal-metrics-grid">
+              {project.metrics.map((metric, idx) => (
+                <div key={idx} className="flagship-metric-item">
+                  <span className="flagship-metric-value font-mono">{metric.value}</span>
+                  <span className="flagship-metric-label">
+                    {isAr ? metric.labelAr : metric.labelEn}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="modal-section">
           <h4>{t('modal.keyFeatures')}</h4>
@@ -71,6 +106,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           >
             {t('modal.viewRepo')}
           </a>
+          {project.docsUrl && (
+            <a
+              href={project.docsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline"
+            >
+              {t('modal.viewDocs')}
+            </a>
+          )}
           <button className="btn btn-ghost" onClick={onClose}>
             {t('modal.close')}
           </button>

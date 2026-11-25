@@ -8,26 +8,26 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Ali Ashraf — AI / ML Engineer',
+  title: 'Ali Ashraf — AI Systems & RAG Engineer',
   description:
-    'Full-Stack AI & Machine Learning Engineer specializing in medical AI diagnosis systems, computer vision models (PyTorch), and LLM agent pipelines (FastAPI, Next.js, LangGraph).',
+    'AI Systems & RAG Engineer specializing in production-grade Agentic RAG pipelines (LangGraph, Qdrant Hybrid Search, Cross-Encoder Reranking), AI Security Guardrails, and cloud-native LLM services.',
   keywords: [
     'Ali Ashraf',
     'AI Engineer',
-    'Machine Learning Engineer',
-    'Medical AI',
-    'PyTorch',
+    'RAG Engineer',
+    'LangGraph',
+    'Qdrant',
+    'AI Security',
     'FastAPI',
     'Next.js',
     'Egypt',
-    'LangGraph',
   ],
   authors: [{ name: 'Ali Ashraf' }],
   robots: 'index, follow',
   openGraph: {
-    title: 'Ali Ashraf — AI / ML Engineer Portfolio',
+    title: 'Ali Ashraf — AI Systems & RAG Engineer Portfolio',
     description:
-      'Building medical AI diagnosis systems, computer vision models, and production LLM agent pipelines.',
+      'Architecting production-grade Agentic RAG pipelines, hybrid retrieval engines, defense-in-depth AI guardrails, and cloud-native LLM microservices.',
     url: 'https://aliashraf.dev',
     siteName: 'Ali Ashraf Portfolio',
     locale: 'en_US',
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ali Ashraf — AI / ML Engineer',
-    description: 'Medical AI Systems, Computer Vision & Full-Stack Next.js Applications.',
+    title: 'Ali Ashraf — AI Systems & RAG Engineer',
+    description: 'Production Agentic RAG, Hybrid Retrieval, AI Security & Cloud Run Systems.',
   },
 };
 

@@ -12,6 +12,7 @@ export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
 
   const projectsList = Object.values(PROJECT_DETAILS);
+  const isSingleFlagship = projectsList.length === 1;
   const filteredProjects = projectsList.filter((p) => {
     if (filter === 'all') return true;
     return p.category.includes(filter);
@@ -24,80 +25,178 @@ export const Projects: React.FC = () => {
       <section className="section" id="projects">
         <div className="container">
           <div className="section-head">
-            <span className="section-tag font-mono">// SYSTEM_ARCHITECTURES</span>
+            <span className="section-tag font-mono">// PRODUCTION_ARCHITECTURES</span>
             <h2 className="section-title">{t('projects.title')}</h2>
           </div>
 
-          <div className="filter-tabs">
-            <button
-              className={`tab-btn font-mono ${filter === 'all' ? 'active' : ''}`}
-              onClick={() => setFilter('all')}
-            >
-              {t('projects.tabAll')}
-            </button>
-            <button
-              className={`tab-btn font-mono ${filter === 'agents' ? 'active' : ''}`}
-              onClick={() => setFilter('agents')}
-            >
-              {t('projects.tabAgents')}
-            </button>
-            <button
-              className={`tab-btn font-mono ${filter === 'rag' ? 'active' : ''}`}
-              onClick={() => setFilter('rag')}
-            >
-              {t('projects.tabRag')}
-            </button>
-            <button
-              className={`tab-btn font-mono ${filter === 'fullstack' ? 'active' : ''}`}
-              onClick={() => setFilter('fullstack')}
-            >
-              {t('projects.tabFullstack')}
-            </button>
-          </div>
+          {projectsList.length > 1 && (
+            <div className="filter-tabs">
+              <button
+                className={`tab-btn font-mono ${filter === 'all' ? 'active' : ''}`}
+                onClick={() => setFilter('all')}
+              >
+                {t('projects.tabAll')}
+              </button>
+              <button
+                className={`tab-btn font-mono ${filter === 'agents' ? 'active' : ''}`}
+                onClick={() => setFilter('agents')}
+              >
+                {t('projects.tabAgents')}
+              </button>
+              <button
+                className={`tab-btn font-mono ${filter === 'rag' ? 'active' : ''}`}
+                onClick={() => setFilter('rag')}
+              >
+                {t('projects.tabRag')}
+              </button>
+              <button
+                className={`tab-btn font-mono ${filter === 'fullstack' ? 'active' : ''}`}
+                onClick={() => setFilter('fullstack')}
+              >
+                {t('projects.tabFullstack')}
+              </button>
+            </div>
+          )}
 
-          <div className="projects-grid">
-            {filteredProjects.map((project) => (
-              <SpotlightCard key={project.id} className="project-card">
-                <div className="project-top">
-                  <div
-                    className="project-icon-box"
-                    dangerouslySetInnerHTML={{ __html: project.iconSvg }}
-                  />
-                  <span className="project-badge font-mono">{t(project.badgeKey)}</span>
-                </div>
+          <div className={isSingleFlagship ? 'flagship-wrap' : 'projects-grid'}>
+            {filteredProjects.map((project) =>
+              isSingleFlagship ? (
+                <SpotlightCard key={project.id} className="project-card flagship-card">
+                  <div className="flagship-split">
+                    <div className="flagship-main">
+                      <div className="project-top">
+                        <div
+                          className="project-icon-box"
+                          dangerouslySetInnerHTML={{ __html: project.iconSvg }}
+                        />
+                        <span className="project-badge font-mono">{t(project.badgeKey)}</span>
+                      </div>
 
-                <h3>{isAr ? project.titleAr : project.title}</h3>
-                <p>{t(project.descKey)}</p>
+                      <h3>{isAr ? project.titleAr : project.title}</h3>
+                      <p>{t(project.descKey)}</p>
 
-                <div className="tags">
-                  {project.tags.slice(0, 5).map((tag, idx) => (
-                    <span key={idx} className="tag font-mono">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                      <div className="tags">
+                        {project.tags.map((tag, idx) => (
+                          <span
+                            key={idx}
+                            className={`tag font-mono ${idx < 4 ? 'tag-core' : ''}`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
 
-                <div className="project-actions">
-                  <button
-                    className="btn-detail font-mono"
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <span>{t('projects.viewDetails')}</span>
-                  </button>
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="proj-link font-mono"
-                    aria-label="GitHub Repository"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
-                    </svg>
-                  </a>
-                </div>
-              </SpotlightCard>
-            ))}
+                      <div className="project-actions">
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => setSelectedProject(project)}
+                        >
+                          <span>{t('projects.viewDetails')}</span>
+                        </button>
+
+                        <div className="project-links-group">
+                          {project.docsUrl && (
+                            <a
+                              href={project.docsUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="proj-link font-mono"
+                              aria-label="Architecture Documentation"
+                            >
+                              <span>{t('projects.viewDocs')}</span>
+                            </a>
+                          )}
+                          <a
+                            href={project.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="proj-link font-mono"
+                            aria-label="GitHub Repository"
+                          >
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    {project.metrics && project.metrics.length > 0 && (
+                      <div className="flagship-kpi-panel">
+                        <span className="kpi-panel-title font-mono">
+                          {t('projects.kpiTitle')}
+                        </span>
+                        <div className="flagship-metrics">
+                          {project.metrics.map((metric, idx) => (
+                            <div key={idx} className="flagship-metric-item">
+                              <span className="flagship-metric-value font-mono">{metric.value}</span>
+                              <span className="flagship-metric-label">
+                                {isAr ? metric.labelAr : metric.labelEn}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </SpotlightCard>
+              ) : (
+                <SpotlightCard key={project.id} className="project-card">
+                  <div className="project-top">
+                    <div
+                      className="project-icon-box"
+                      dangerouslySetInnerHTML={{ __html: project.iconSvg }}
+                    />
+                    <span className="project-badge font-mono">{t(project.badgeKey)}</span>
+                  </div>
+
+                  <h3>{isAr ? project.titleAr : project.title}</h3>
+                  <p>{t(project.descKey)}</p>
+
+                  <div className="tags">
+                    {project.tags.slice(0, 5).map((tag, idx) => (
+                      <span key={idx} className="tag font-mono">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="project-actions">
+                    <button
+                      className="btn-detail font-mono"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      <span>{t('projects.viewDetails')}</span>
+                    </button>
+
+                    <div className="project-links-group">
+                      {project.docsUrl && (
+                        <a
+                          href={project.docsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="proj-link font-mono"
+                          aria-label="Architecture Documentation"
+                        >
+                          <span>{t('projects.viewDocs')}</span>
+                        </a>
+                      )}
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="proj-link font-mono"
+                        aria-label="GitHub Repository"
+                      >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </SpotlightCard>
+              )
+            )}
           </div>
         </div>
       </section>

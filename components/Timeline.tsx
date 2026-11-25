@@ -2,9 +2,11 @@
 
 import React from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { TIMELINE_ITEMS } from '@/lib/projects-data';
 
 export const Timeline: React.FC = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const isAr = lang === 'ar';
 
   return (
     <section className="section" id="timeline">
@@ -15,41 +17,18 @@ export const Timeline: React.FC = () => {
         </div>
 
         <div className="timeline-wrap">
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div className="timeline-content">
-              <span className="timeline-date font-mono">{t('timeline.item1.date')}</span>
-              <h3>{t('timeline.item1.title')}</h3>
-              <p>{t('timeline.item1.desc')}</p>
+          {TIMELINE_ITEMS.map((item) => (
+            <div key={item.id} className="timeline-item">
+              <div className="timeline-dot" />
+              <div className="timeline-content">
+                <span className="timeline-date font-mono">
+                  {isAr ? item.dateAr : item.dateEn}
+                </span>
+                <h3>{isAr ? item.titleAr : item.titleEn}</h3>
+                <p>{isAr ? item.descAr : item.descEn}</p>
+              </div>
             </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div className="timeline-content">
-              <span className="timeline-date font-mono">{t('timeline.item2.date')}</span>
-              <h3>{t('timeline.item2.title')}</h3>
-              <p>{t('timeline.item2.desc')}</p>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div className="timeline-content">
-              <span className="timeline-date font-mono">{t('timeline.item3.date')}</span>
-              <h3>{t('timeline.item3.title')}</h3>
-              <p>{t('timeline.item3.desc')}</p>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div className="timeline-content">
-              <span className="timeline-date font-mono">{t('timeline.item4.date')}</span>
-              <h3>{t('timeline.item4.title')}</h3>
-              <p>{t('timeline.item4.desc')}</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

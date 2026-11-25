@@ -1,154 +1,119 @@
+export interface ProjectMetric {
+  value: string;
+  labelEn: string;
+  labelAr: string;
+}
+
 export interface ProjectDetail {
   id: string;
   category: string;
+  status: 'production' | 'upcoming';
   iconSvg: string;
   badgeKey: string;
   title: string;
   titleAr: string;
   descKey: string;
+  metrics?: ProjectMetric[];
   featuresEn: string[];
   featuresAr: string[];
   tags: string[];
   repo: string;
+  docsUrl?: string;
+}
+
+export interface TimelineEntry {
+  id: string;
+  dateEn: string;
+  dateAr: string;
+  titleEn: string;
+  titleAr: string;
+  descEn: string;
+  descAr: string;
 }
 
 export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
-  hakeem: {
-    id: 'hakeem',
-    category: 'agents genai',
-    iconSvg: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 0 0 4.5 2.6v3.8c0 .2.1.3.3.3h3.8c.2 0 .3-.1.3-.3V2.6a.3.3 0 0 0-.3-.3H4.8z"/><path d="M14 12v-2a4 4 0 0 0-4-4H8"/><rect x="2" y="16" width="20" height="6" rx="2"/><path d="M6 12h12"/></svg>',
-    badgeKey: 'projects.graduation',
-    title: 'Hakeem AI (Multi-Agent System)',
-    titleAr: 'حكيم AI (نظام متعدد الوكلاء)',
-    descKey: 'projects.hakeem.desc',
+  'hr-policy-rag': {
+    id: 'hr-policy-rag',
+    category: 'agents rag fullstack',
+    status: 'production',
+    iconSvg:
+      '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
+    badgeKey: 'projects.enterpriseRag',
+    title: 'HR Policy RAG Assistant',
+    titleAr: 'مساعد سياسات الموارد البشرية (Enterprise RAG)',
+    descKey: 'projects.hr.desc',
+    metrics: [
+      { value: '100%', labelEn: 'LangSmith Correctness', labelAr: 'صحة الإجابات (LangSmith)' },
+      { value: '90%', labelEn: 'Answer Groundedness', labelAr: 'الالتزام بالمصادر' },
+      { value: '8/8', labelEn: 'Red Team Defense', labelAr: 'صد هجمات الاختراق' },
+      { value: '50-100ms', labelEn: 'Semantic Cache Hit', labelAr: 'زمن الكاش الدلالي' },
+      { value: '53/53', labelEn: 'Automated Tests', labelAr: 'اختبارات آلية ناجحة' },
+      { value: '<5s', labelEn: 'Cloud Run Cold Start', labelAr: 'بدء التشغيل السحابي' },
+    ],
     featuresEn: [
-      'Multi-agent clinical symptom extraction using LangGraph graph workflows.',
-      'Stateful conversation tracking backed by PostgreSQL persistence.',
-      'FastAPI async architecture with real-time JSON response streaming.',
-      'Structured clinical diagnostic reports with confidence metrics.'
+      'Domain-Driven dual serving architecture (FastAPI REST API + Streamlit/Chainlit UIs) orchestrated by a LangGraph ReAct state machine with LiteLLM failover (Gemini -> Groq) and LangGraph Studio canvas.',
+      'Idempotent Parse-Once-to-JSON ETL across PDF, DOCX, PPTX, and TXT files into Qdrant Cloud Hybrid Search (Jina 768-dim dense + FastEmbed BM25 sparse with deterministic UUID5 upserts) and Cross-Encoder Re-ranking.',
+      'ONNX-accelerated local Semantic Cache (cosine similarity >= 0.80) slashing repeat query latency from 6-7s down to 50-100ms.',
+      'Three-tier defense-in-depth AI Guardrails (Model Armor + 6-turn history screening + category scope fencing + output verification) blocking 8/8 (100%) adversarial Red Team attacks.',
+      'Automated LLM-as-a-Judge evaluation on LangSmith (100% Correctness, 90% Groundedness) and 53/53 passing unit and integration tests including headless Streamlit AppTest.',
+      'Production Docker Compose stack and Google Cloud Run Dockerfile with build-time BM25 weight pre-warming (<5s cold start) and Google OAuth 2.0 email-whitelisted RBAC.',
     ],
     featuresAr: [
-      'استخراج الأعراض سريرياً عبر وكلاء متعددي المهام بـ LangGraph.',
-      'تتبع المحادثات وحفظ الحالة بـ PostgreSQL.',
-      'معمارية لا تزامنية بـ FastAPI مع بث المخرجات فورياً.',
-      'تقارير تشخيصية سريرية منظمة مع نسب دقة.'
+      'معمارية Domain-Driven بواجهتي تشغيل (FastAPI REST API وواجهة Streamlit/Chainlit) يديرها وكيل LangGraph ReAct مع موجه LiteLLM للتحويل التلقائي (Gemini -> Groq) ودعم LangGraph Studio.',
+      'خط استيعاب Parse-Once-to-JSON لملفات PDF وDOCX وPPTX وTXT مع بحث هجين في Qdrant Cloud (متجهات Jina 768-dim + بحث BM25 عبر FastEmbed بمعرفات UUID5) وإعادة ترتيب بـ Cross-Encoder.',
+      'كاش دلالي محلي مسرع بـ ONNX (تشابه >= 0.80) يقلص زمن الاستجابة للاستعلامات المتكررة من 6-7 ثوان إلى 50-100 مللي ثانية.',
+      'دروع حماية ثلاثية الطبقات (Model Armor + فحص سياق 6 جولات + حصر النطاق + تدقيق المخرجات) صدت 8/8 (100%) من هجمات الـ Red Teaming.',
+      'تقييم آلي LLM-as-a-Judge على LangSmith بنسبة 100% صحة و90% التزام بالمصادر، مع اجتياز 53/53 اختباراً آلياً شاملة Streamlit AppTest.',
+      'حاويات Docker Compose وملف Dockerfile مهيأ لـ Google Cloud Run بتحميل مسبق لأوزان BM25 (بدء تشغيل أقل من 5 ثوان) وبوابة Google OAuth 2.0 للصلاحيات.',
     ],
-    tags: ['LangGraph', 'LLM Agents', 'FastAPI', 'PostgreSQL', 'Python', 'JSON Schema'],
-    repo: 'https://github.com/ali-abofouda'
+    tags: [
+      'LangGraph',
+      'Qdrant Hybrid',
+      'Cross-Encoder',
+      'FastEmbed ONNX',
+      'LiteLLM',
+      'FastAPI',
+      'LangSmith',
+      'Docker & Cloud Run',
+      'Google OAuth 2.0',
+    ],
+    repo: 'https://github.com/ali-abofouda/hr-policy-rag-assistant',
+    docsUrl: 'https://github.com/ali-abofouda/hr-policy-rag-assistant/tree/main/docs',
   },
-  agentslab: {
-    id: 'agentslab',
-    category: 'agents rag genai',
-    iconSvg: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><line x1="8.5" y1="2" x2="15.5" y2="2"/><line x1="7" y1="16" x2="17" y2="16"/></svg>',
-    badgeKey: 'projects.lab',
-    title: 'Agents & RAG Lab',
-    titleAr: 'مختبر الوكلاء وأنظمة RAG',
-    descKey: 'projects.agents.desc',
-    featuresEn: [
-      'Dense vector embedding search using ChromaDB vector store.',
-      'Tool-calling agent patterns for external API integration.',
-      'Benchmark evaluations for context retrieval accuracy.',
-      'Modular Python codebase for quick LLM prototyping.'
-    ],
-    featuresAr: [
-      'بحث بمترادفات المتجهات بـ ChromaDB Vector Store.',
-      'أنماط استدعاء الأدوات الخارجية (Tool-calling).',
-      'تقييم ودراسة دقة استرجاع السياق.',
-      'بيئة برمجية نمطية لتجربة نماذج اللغة.'
-    ],
-    tags: ['RAG Pipeline', 'ChromaDB', 'LangChain', 'Tool Calling', 'Python', 'Pydantic'],
-    repo: 'https://github.com/ali-abofouda'
-  },
-  roadmap: {
-    id: 'roadmap',
-    category: 'genai fullstack',
-    iconSvg: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>',
-    badgeKey: 'projects.genai',
-    title: 'Roadmap GenAI Platform',
-    titleAr: 'منصة مخطط GenAI',
-    descKey: 'projects.roadmap.desc',
-    featuresEn: [
-      'Dynamic LLM roadmap generation for software engineering topics.',
-      'Interactive study session tracker with Pomodoro focus timer.',
-      'State management using Zustand with local persistence.',
-      'Analytics charts rendered using Recharts.'
-    ],
-    featuresAr: [
-      'توليد ديناميكي لخرائط التعلم بالنماذج اللغوية.',
-      'مؤقت بومودورو تفاعلي لتتبع جلسات المذاكرة.',
-      'إدارة حالة مرنة باستخدام Zustand.',
-      'رسوم بيانية تحليلية عبر Recharts.'
-    ],
-    tags: ['Generative AI', 'Next.js 15', 'React', 'Zustand', 'Recharts', 'Tailwind CSS'],
-    repo: 'https://github.com/ali-abofouda'
-  },
-  cnn: {
-    id: 'cnn',
-    category: 'rag',
-    iconSvg: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>',
-    badgeKey: 'projects.research',
-    title: 'Medical Vision AI Models',
-    titleAr: 'نماذج الرؤية الحاسوبية الطبية',
-    descKey: 'projects.cnn.desc',
-    featuresEn: [
-      'Bone Fracture Segmentation using U-Net architecture with PyTorch.',
-      'Brain Tumor Classification on MRI scans with ResNet transfer learning.',
-      'Chest X-Ray Pneumonia & Abnormality Detection.',
-      'Retinal Fundus Image Analysis for diabetic retinopathy screening.'
-    ],
-    featuresAr: [
-      'تجزئة كسور العظام بـ U-Net وحزمة PyTorch.',
-      'تصنيف أورام المخ في الرنين المغناطيسي بـ ResNet.',
-      'كشف الالتهاب الرئوي في أشعة الصدر.',
-      'تحليل صور قاع العين للكشف عن اعتلال الشبكية.'
-    ],
-    tags: ['PyTorch', 'Torchvision', 'U-Net', 'ResNet', 'OpenCV', 'Scikit-Learn'],
-    repo: 'https://github.com/ali-abofouda'
-  },
-  bodyshift: {
-    id: 'bodyshift',
-    category: 'fullstack',
-    iconSvg: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
-    badgeKey: 'projects.fullstack',
-    title: 'BodyShift Application',
-    titleAr: 'تطبيق BodyShift',
-    descKey: 'projects.bodyshift.desc',
-    featuresEn: [
-      'Secure Supabase Auth with Row Level Security (RLS).',
-      'Full CRUD operations for daily workout logs & nutrient intake.',
-      'Date filtering and monthly progress dashboard using Recharts.',
-      'Strict input validation using Zod schemas.'
-    ],
-    featuresAr: [
-      'مصادقة آمنة بـ Supabase مع حماية البيانات على مستوى السطر.',
-      'إضافة وتعديل وحذف التمارين والسعرات اليومية.',
-      'فلترة بالتاريخ ولوحة تحليلات شهرية بـ Recharts.',
-      'تحقق صارم من المدخلات بواسطة Zod.'
-    ],
-    tags: ['Next.js 15', 'Supabase', 'TypeScript', 'Recharts', 'Zod', 'Tailwind CSS'],
-    repo: 'https://github.com/ali-abofouda'
-  },
-  dietmaker: {
-    id: 'dietmaker',
-    category: 'fullstack',
-    iconSvg: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
-    badgeKey: 'projects.tool',
-    title: 'DietMaker Service',
-    titleAr: 'خدمة DietMaker المصغرة',
-    descKey: 'projects.diet.desc',
-    featuresEn: [
-      'Automated macro nutrient calculations based on user metrics.',
-      'Jinja2 PDF rendering with full right-to-left Arabic text support.',
-      'Configurable visual color themes and custom brand logos.',
-      'Clean RESTful API endpoints.'
-    ],
-    featuresAr: [
-      'حساب تلقائي للماكروز بناءً على بيانات المستخدم.',
-      'قوالب Jinja2 وتحويل إلى PDF بدعم كامل للغة العربية.',
-      'ثيمات وألوان مخصصة للتقرير.',
-      'واجهة برمجية RESTful منسقة.'
-    ],
-    tags: ['FastAPI', 'Python', 'Jinja2', 'ReportLab / WeasyPrint', 'PDF Engine'],
-    repo: 'https://github.com/ali-abofouda'
-  }
 };
+
+export const TIMELINE_ITEMS: TimelineEntry[] = [
+  {
+    id: 'hr-policy-rag',
+    dateEn: '2026 — Present',
+    dateAr: '2026 — الحالي',
+    titleEn: 'AI & RAG Systems Engineer — HR Policy RAG Assistant',
+    titleAr: 'مهندس أنظمة ذكاء اصطناعي وRAG — مشروع HR Policy RAG Assistant',
+    descEn:
+      'Engineered an end-to-end secure enterprise RAG system across three production phases: Qdrant Hybrid Search (Dense + BM25) with Cross-Encoder reranking, ONNX Semantic Cache (50-100ms), 3-tier AI Guardrails (8/8 Red Team pass), LangSmith LLM-as-a-Judge (100% Correctness / 90% Groundedness), FastAPI + Google OAuth 2.0, and Cloud Run containerization verified by 53/53 automated tests.',
+    descAr:
+      'تطوير نظام RAG مؤسسي آمن ومتكامل عبر ثلاث مراحل إنتاجية: بحث هجين على Qdrant مع Cross-Encoder، كاش دلالي بـ ONNX، دروع أمان صدت 8/8 هجمات Red Team، تقييم LangSmith بنسبة 100% صحة و90% التزام بالمصادر، خدمات FastAPI وبوابة Google OAuth 2.0، وحاويات Cloud Run واجتياز 53/53 اختباراً.',
+  },
+  {
+    id: 'rag-mastery-handbook',
+    dateEn: '2025 — 2026',
+    dateAr: '2025 — 2026',
+    titleEn: 'AI Engineering Architecture & Open-Source Handbook (rag-mastery)',
+    titleAr: 'معمارية هندسة الذكاء الاصطناعي والدليل التقني المفتوح (rag-mastery)',
+    descEn:
+      'Authored structured engineering blueprints and technical glossaries covering RAG fundamentals, multi-format document ingestion, vector embeddings, stateful LangGraph orchestration, and production evaluation standards.',
+    descAr:
+      'صياغة أدلة معمارية وموسوعة مصطلحات تقنية تغطي أساسيات الـ RAG، معالجة المستندات متعددة الصيغ، تضمينات المتجهات، إدارة الحالة بـ LangGraph، ومعايير التقييم الإنتاجية.',
+  },
+  {
+    id: 'tanta-engineering',
+    dateEn: '2022 — 2026',
+    dateAr: '2022 — 2026',
+    titleEn: 'B.Sc. in Computer & Automatic Control Engineering — Tanta University',
+    titleAr: 'بكالوريوس هندسة الحاسبات والتحكم الآلي — جامعة طنطا',
+    descEn:
+      'Focused on Artificial Intelligence, Distributed Software Systems, Algorithms, Data Engineering, and Clean Architecture foundations.',
+    descAr:
+      'التخصص في الذكاء الاصطناعي، الأنظمة البرمجية الموزعة، الخوارزميات، هندسة البيانات، وأساسيات المعمارية النظيفة.',
+  },
+];

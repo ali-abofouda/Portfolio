@@ -49,25 +49,25 @@ export const GitHubTelemetry: React.FC = () => {
           <h2 className="section-title">{t('github.title')}</h2>
         </div>
 
-        {/* Live Metrics Grid */}
+        {/* Compact Live Metrics Strip */}
         <div className="telemetry-stats">
           <SpotlightCard className="stat">
             <span className="stat-num font-mono">
-              {loading ? '...' : data?.publicRepos ?? 12}
+              {loading ? '...' : data?.publicRepos ?? '--'}
             </span>
             <span className="stat-label">{t('github.publicRepos')}</span>
           </SpotlightCard>
 
           <SpotlightCard className="stat">
             <span className="stat-num font-mono">
-              {loading ? '...' : data?.totalStars ?? 18}
+              {loading ? '...' : data?.totalStars ?? '--'}
             </span>
             <span className="stat-label">{t('github.stars')}</span>
           </SpotlightCard>
 
           <SpotlightCard className="stat">
             <span className="stat-num font-mono">
-              {loading ? '...' : data?.followers ?? 35}
+              {loading ? '...' : data?.followers ?? '--'}
             </span>
             <span className="stat-label">{t('github.followers')}</span>
           </SpotlightCard>
@@ -87,8 +87,22 @@ export const GitHubTelemetry: React.FC = () => {
                 {repo.description && <p className="repo-desc">{repo.description}</p>}
                 <div className="repo-card-footer">
                   <div className="repo-metrics font-mono">
-                    <span>★ {repo.stars}</span>
-                    <span>⑂ {repo.forks}</span>
+                    <span className="repo-metric-item">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                      <span>{repo.stars}</span>
+                    </span>
+                    <span className="repo-metric-item">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="18" r="3" />
+                        <circle cx="6" cy="6" r="3" />
+                        <circle cx="18" cy="6" r="3" />
+                        <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9" />
+                        <path d="M12 12v3" />
+                      </svg>
+                      <span>{repo.forks}</span>
+                    </span>
                   </div>
                   <a
                     href={repo.url}
@@ -96,7 +110,7 @@ export const GitHubTelemetry: React.FC = () => {
                     rel="noopener noreferrer"
                     className="repo-link font-mono"
                   >
-                    <span>View Repository →</span>
+                    <span>{t('github.viewRepo')}</span>
                   </a>
                 </div>
               </SpotlightCard>
